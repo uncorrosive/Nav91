@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563eb;
+  --secondary: #1e40af;
+  --accent: #3b82f6;
+  --neutral: #64748b;
+}
+
+body {
+  @apply antialiased font-['Plus_Jakarta_Sans'] bg-white dark:bg-gray-950 text-gray-900 dark:text-white;
+}
+
+/* Map container styles */
+.mapboxgl-map {
+  @apply rounded-lg overflow-hidden;
+}
+
+/* Hide MapTiler attribution and controls */
+.maplibregl-ctrl-bottom-right,
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-logo,
+.maplibregl-ctrl-attrib {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Map controls container */
+.map-controls-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* Ensure markers stay within map bounds */
+.mapboxgl-marker {
+  contain: layout style paint;
+  z-index: 1;
+}
+
+.mapboxgl-canvas-container {
+  z-index: 1;
+}
+
+.mapboxgl-control-container {
+  z-index: 2;
+}
+
+/* Rest of your existing styles */
+.glass-card {
+  @apply bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border border-gray-100 dark:border-gray-800 shadow-xl;
+}
+
+.nav-item {
+  @apply relative px-4 py-2 rounded-full transition-all duration-300;
+}
+
+.nav-item::after {
+  content: '';
+  @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-current transition-all duration-300;
+}
+
+.nav-item:hover::after {
+  @apply w-1/2;
+}
+
+.nav-item.active {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+.nav-item.active::after {
+  @apply w-3/4;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 bg-clip-text text-transparent;
+}
+
+.gradient-border {
+  @apply relative rounded-2xl p-[1px] bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500;
+}
+
+.gradient-border::before {
+  content: '';
+  @apply absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 opacity-50 blur-xl transition-opacity duration-500;
+}
+
+.gradient-border:hover::before {
+  @apply opacity-75;
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 bg-white dark:bg-gray-950 backdrop-blur-sm 
+         border border-gray-100 dark:border-gray-800 rounded-xl text-gray-900 dark:text-white
+         placeholder-gray-400 dark:placeholder-gray-500
+         focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 
+         transition-all duration-300;
+}
+
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 text-white rounded-xl
+         font-semibold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30
+         transition-all duration-300 hover:-translate-y-0.5 
+         hover:opacity-90;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-200 
+         rounded-xl font-semibold shadow-lg
+         hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-300;
+}
+
+.map-container {
+  @apply rounded-3xl overflow-hidden shadow-2xl;
+  height: 400px;
+}
